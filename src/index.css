@@ -1,0 +1,9 @@
+body{
+    background-image: url('https://cdn.mos.cms.futurecdn.net/HuGGeENt6kGyixe3hT9tnY.jpg');
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed; 
+    margin: 0; 
+    padding: 0;
+    color: white;
+}

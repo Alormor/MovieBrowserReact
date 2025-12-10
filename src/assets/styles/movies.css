@@ -1,0 +1,34 @@
+.sectMoviesWrapper {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.divMovies {
+    display: grid;
+    grid-template-columns: repeat(5, 250px);
+    grid-template-rows: repeat(2, 400px);
+
+    gap: 20px;
+    row-gap: 60px;
+}
+
+figure {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* centra horizontalmente */
+}
+
+.divMovies-movie img{
+    height: 350px;
+    width: 215px;
+    cursor: pointer;
+    border: double rgba(199, 132, 212, 0.6) 2.5px;
+    border-radius: 10px;
+}
+
+img.img-movie:hover {
+    transform: scale(1.1);
+    transition: 0.3s ease;
+}

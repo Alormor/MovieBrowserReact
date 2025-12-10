@@ -1,0 +1,61 @@
+.searchBar{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    display: flex;
+    justify-content: center;
+    margin: 10px;
+    gap: 20px;
+}
+
+.input-search{
+    width: 400px;
+    height: 35px;
+    border-radius: 20px;
+    padding-left: 15px
+}
+
+.input-year{
+    width: 40px;
+    height: 35px;
+    border-radius: 15px;
+    padding-left: 10px;
+    margin-right: 5px;
+}
+
+.select-type{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    width: 100px;
+    height: 40px;
+    background-image: url('https://media.posterlounge.com/img/products/650000/643985/643985_poster.jpg');
+    background-position: center center;
+    background-attachment: fixed; 
+    padding: 5px;
+    height: 40px;
+    cursor: pointer;
+    font-weight: bold;
+    color: darkblue;
+    border-style: none;
+    border-radius: 10px;
+}
+
+button{
+    background-image: url('https://media.posterlounge.com/img/products/650000/643985/643985_poster.jpg');
+    background-position: center center;
+    background-attachment: fixed; 
+    padding: 5px;
+    height: 40px;
+    cursor: pointer;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
+    color: darkblue;
+    border-style: none;
+    border-radius: 10px;
+}
+
+.btn-search {
+    background: none;
+    background-image: none;
+    border-style: none;
+    font-size: 25px;
+    margin-left: -60px;
+    color: cadetblue;
+}
