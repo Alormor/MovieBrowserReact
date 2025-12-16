@@ -18,6 +18,7 @@ export default function SearchBar({onSearch}){
                 placeholder="Search..."
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
+                onKeyDown={(e) => e.key === "Enter" && handleSearch()}
             />
 
             <button className="btn-search" onClick={handleSearch}>
@@ -31,6 +32,7 @@ export default function SearchBar({onSearch}){
                     value={year}
                     onChange={(e) => setYear(e.target.value)}
                 />
+                
                 <select 
                     className="select-type" 
                     name="type"

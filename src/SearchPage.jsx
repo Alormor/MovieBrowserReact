@@ -1,28 +1,46 @@
-import { useState } from "react";
-import { useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import ShowMovies from "./ShowMovies";
 import SearchBar from "./SearchBar";
 
 export default function SearchPage() {
     const [movies, setMovies] = useState([]);
-    const [query, setQuery] = useState("star");
+    const [query, setQuery] = useState("");
     const [year, setYear] = useState("");
     const [type, setType] = useState("");
     const [page, setPage] = useState(1);
+    const fetchingRef = useRef(false);
 
-    useEffect(() =>{
-        console.log(query)
-        if(query != undefined){
-            fetch(`https://www.omdbapi.com/?apikey=dfe7b98e&s=${query}&page=${page}&y=${year}&type=${type}`).then(
-            response => response.json()).then(data =>{
-                fetchedMovies(data.Search);
+    useEffect(() => {
+        if (!query || query.trim() === "") return;
+
+        fetchingRef.current = true;
+
+        fetch(`https://www.omdbapi.com/?apikey=dfe7b98e&s=${query}&page=${page}&y=${year}&type=${type}`)
+            .then(res => res.json())
+            .then(data => {
+                setMovies(curr => [...curr, ...(data.Search || [])]);
+                fetchingRef.current = false;
             });
-        }
-    }, [query]);
+    }, [query, page, year, type]);
 
-    function fetchedMovies(movieList){
-        setMovies([...movies, ...movieList]);
-    }
+    useEffect(() => {
+        const handleScroll = () => {
+            const puedeIncrementar =
+                !fetchingRef.current &&
+                window.innerHeight + window.scrollY >=
+                document.documentElement.scrollHeight - 2;
+
+            if (puedeIncrementar) {
+                setPage(curr => curr + 1);
+            }
+        };
+
+        window.addEventListener("scroll", handleScroll);
+
+        return () => {
+            window.removeEventListener("scroll", handleScroll);
+        };
+    }, []);
 
     const search = (newQuery, newYear, newType) => {
         setMovies([]);
@@ -30,12 +48,12 @@ export default function SearchPage() {
         setYear(newYear);
         setType(newType);
         setPage(1);
-    }
+    };
 
     return (
         <>
-            <SearchBar onSearch={search()}/>
+            <SearchBar onSearch={search} />
             <ShowMovies movies={movies} />
         </>
-    )
+    );
 }
