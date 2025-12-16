@@ -8,18 +8,21 @@ export default function SearchPage() {
     const [year, setYear] = useState("");
     const [type, setType] = useState("");
     const [page, setPage] = useState(1);
+    const [loading, setLoading] = useState(false);
     const fetchingRef = useRef(false);
 
     useEffect(() => {
         if (!query || query.trim() === "") return;
 
         fetchingRef.current = true;
+        setLoading(true);
 
         fetch(`https://www.omdbapi.com/?apikey=dfe7b98e&s=${query}&page=${page}&y=${year}&type=${type}`)
             .then(res => res.json())
             .then(data => {
                 setMovies(curr => [...curr, ...(data.Search || [])]);
                 fetchingRef.current = false;
+                setLoading(false);
             });
     }, [query, page, year, type]);
 
@@ -54,6 +57,11 @@ export default function SearchPage() {
         <>
             <SearchBar onSearch={search} />
             <ShowMovies movies={movies} />
+            {loading && (
+                <div className="loading">
+                    <img src="/assets/images/load.gif" alt="Loading..." />
+                </div>
+            )}
         </>
     );
 }
