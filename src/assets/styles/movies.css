@@ -1,17 +1,15 @@
 .sectMoviesWrapper {
-    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
+    min-height: auto;
 }
 
 .divMovies {
     display: grid;
     grid-template-columns: repeat(5, 250px);
-    grid-template-rows: repeat(2, 400px);
-
+    grid-auto-rows: auto;
     gap: 20px;
-    row-gap: 60px;
 }
 
 figure {
@@ -32,3 +30,5 @@ img.img-movie:hover {
     transform: scale(1.1);
     transition: 0.3s ease;
 }
+
+

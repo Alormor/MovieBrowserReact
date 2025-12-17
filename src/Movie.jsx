@@ -1,6 +1,6 @@
 import './assets/styles/movies.css'
 
-export default function Movie({id, poster, title}) { 
+export default function Movie({id, poster, title, onSelect}) { 
     const handleError = (e) => {
         e.target.onerror = null; 
         e.target.src = "/assets/images/no-image.png";
@@ -8,7 +8,7 @@ export default function Movie({id, poster, title}) {
     };
 
     return (
-        <div className='divMovies-movie'>
+        <div className='divMovies-movie' onClick={() => onSelect(id)}>
             <figure>
                 <img id={id}
                     src={poster}

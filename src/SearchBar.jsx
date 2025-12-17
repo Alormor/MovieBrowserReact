@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import './assets/styles/searchBar.css'
 
 export default function SearchBar({onSearch}){
@@ -10,6 +10,11 @@ export default function SearchBar({onSearch}){
         onSearch(query, year, type);
     }
 
+    useEffect(() => {
+        if (query.length < 3) return;
+
+        onSearch(query, year, type);
+    }, [query, year, type, onSearch]);
 
     return(
         <div className="searchBar">

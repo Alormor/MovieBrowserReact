@@ -1,6 +1,6 @@
 import Movie from './Movie'
 
-export default function ShowMovies({movies}) {
+export default function ShowMovies({movies, onSelect}) {
 
     let movieSequence = movies.map((movie, index) => 
         <Movie 
@@ -8,6 +8,7 @@ export default function ShowMovies({movies}) {
             id={movie.imdbID} 
             poster={movie.Poster}
             title={movie.Title}
+            onSelect={onSelect} 
         ></Movie>);
     return (
         <section className='sectMoviesWrapper'>
