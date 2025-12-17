@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import ShowMovies from "./ShowMovies";
 import SearchBar from "./SearchBar";
 import MovieDetails from "./MovieDetails";
+import FavouritePage from "./FavouritePage";
 
 export default function SearchPage() {
     const [movies, setMovies] = useState([]);
@@ -9,10 +10,13 @@ export default function SearchPage() {
     const [year, setYear] = useState("");
     const [type, setType] = useState("");
     const [page, setPage] = useState(1);
+
     const [loading, setLoading] = useState(false);
     const fetchingRef = useRef(false);
 
     const [selectedMovie, setSelectedMovie] = useState(null);
+
+    const [favouritePageActive, setFavouritePageActive] = useState(false);
 
     useEffect(() => {
         if (!query || query.trim() === "") return;
@@ -81,27 +85,35 @@ export default function SearchPage() {
 
     return (
         <>
-            <h1>DeepSpace Movies</h1>
-            <SearchBar onSearch={search} />
-            
-            <ShowMovies movies={movies} onSelect={handleSelectMovie}/>
-            {selectedMovie && (
-                <div 
-                    className="overlay" 
-                    onClick={(e) => {
-                        if (e.target.classList.contains('overlay')) {
-                            handleBack();
-                        }
-                    }}
-                >
-                    <MovieDetails movie={selectedMovie} onBack={handleBack} />
-                </div>
-            )}
-            
-            {loading && (
-                <div className="loading">
-                    <img src="/assets/images/load.gif" alt="Loading..." />
-                </div>
+            {!favouritePageActive ? (
+                <>
+                    <button>Go to favourites</button>
+                    
+                    <h1>DeepSpace Movies</h1>
+                    <SearchBar onSearch={search} />
+                    
+                    <ShowMovies movies={movies} onSelect={handleSelectMovie}/>
+                    {selectedMovie && (
+                        <div 
+                            className="overlay" 
+                            onClick={(e) => {
+                                if (e.target.classList.contains('overlay')) {
+                                    handleBack();
+                                }
+                            }}
+                        >
+                            <MovieDetails movie={selectedMovie} onBack={handleBack} />
+                        </div>
+                    )}
+                    
+                    {loading && (
+                        <div className="loading">
+                            <img src="/assets/images/load.gif" alt="Loading..." />
+                        </div>
+                    )} 
+                </> 
+            ):(
+                <FavouritePage></FavouritePage>
             )}
         </>
     );
