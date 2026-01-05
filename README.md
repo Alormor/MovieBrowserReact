@@ -21,9 +21,6 @@ Before starting the development, part of the work involves studying the API docu
 
 The application is built entirely with React and behaves as a true SPA, preserving UI state and scroll position during navigation.
 
-The project is live at:
-🔗 
-
 ---
 
 ## 🚀 Features
