@@ -7,7 +7,7 @@ The app interacts with the **OMDb API (Open Movie Database)** to fetch and displ
 🔗 OMDb API: https://www.omdbapi.com/
 
 The project is live at:
-🔗 
+🔗 https://moviebrowser-8da01.web.app
 
 ---
 

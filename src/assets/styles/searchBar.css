@@ -5,6 +5,18 @@ h1{
     color: aqua;
 }
 
+.btn-favourites{
+    position: absolute;
+    right: 10px;
+    top: 10px;
+
+    display: flex;
+    align-items: center;
+    gap: 5px;
+
+    padding: 5px;
+}
+
 .searchBar{
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     display: flex;

@@ -52,7 +52,7 @@ export default function SearchPage() {
         };
     }, []);
 
-    const search = (newQuery, newYear, newType) => {
+    function search(newQuery, newYear, newType) {
         if (newQuery.length >= 3 && newQuery !== query) {
             setMovies([]);
             setPage(1);
@@ -62,7 +62,7 @@ export default function SearchPage() {
         setType(newType);
     };
 
-    const handleSelectMovie = (id) => {
+    function handleSelectMovie(id) {
         setLoading(true);
 
         fetch(`https://www.omdbapi.com/?apikey=dfe7b98e&i=${id}`)
@@ -73,7 +73,9 @@ export default function SearchPage() {
             });
     };
 
-    const handleBack = () => setSelectedMovie(null);
+    function handleBack() {
+        setSelectedMovie(null);
+    }
 
     useEffect(() => {
         if (selectedMovie) {
@@ -83,11 +85,16 @@ export default function SearchPage() {
         }
     }, [selectedMovie]);
 
+    function handlePage(){
+        if(favouritePageActive) setFavouritePageActive(false);
+        else setFavouritePageActive(true);
+    }
+
     return (
         <>
             {!favouritePageActive ? (
                 <>
-                    <button>Go to favourites</button>
+                    <button className="btn-favourites" onClick={handlePage}><i className="fa-solid fa-heart"></i> Go to favourites</button>
                     
                     <h1>DeepSpace Movies</h1>
                     <SearchBar onSearch={search} />
@@ -113,7 +120,10 @@ export default function SearchPage() {
                     )} 
                 </> 
             ):(
-                <FavouritePage></FavouritePage>
+                <>
+                <button className="btn-search-page" onClick={handlePage}> Go to favourites</button>
+                    <FavouritePage></FavouritePage>
+                </>
             )}
         </>
     );

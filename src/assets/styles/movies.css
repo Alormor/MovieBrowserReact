@@ -26,9 +26,24 @@ figure {
     border-radius: 10px;
 }
 
-img.img-movie:hover {
-    transform: scale(1.1);
-    transition: 0.3s ease;
+.fa-heart{
+    font-size: 1.5rem;
+    color: crimson;
 }
 
+.movie-heart{
+    position: absolute;
+    cursor: pointer;
+    margin-top: 15px;
+    margin-left: 75px;
+}
 
+.divMovies-movie:hover {
+    transform: scale(1.1);
+    transition: transform 0.3s ease;
+}
+
+.fa-heart:hover {
+    transform: scale(1.5);
+    transition: transform 0.3s ease;
+}
