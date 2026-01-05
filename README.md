@@ -70,7 +70,7 @@ The project is live at:
 
 ---
 
-### ⌛ Favorites System
+### ✔️ Favorites System
 - Users can **mark movies as favorites** by clicking on a heart icon overlaying each poster.  
 - Favorited movies are **stored in `localStorage`**, so they persist even after refreshing the page.  
 - Users can **add or remove movies from favorites** dynamically from both the search results and the favorites page.  
