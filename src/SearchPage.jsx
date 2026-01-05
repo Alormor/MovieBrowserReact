@@ -121,7 +121,7 @@ export default function SearchPage() {
                 </> 
             ):(
                 <>
-                <button className="btn-search-page" onClick={handlePage}> Go to favourites</button>
+                <button className="btn-search-page" onClick={handlePage}>Continue search</button>
                     <FavouritePage></FavouritePage>
                 </>
             )}

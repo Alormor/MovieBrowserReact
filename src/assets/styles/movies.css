@@ -12,10 +12,16 @@
     gap: 20px;
 }
 
+.divMovies h1{
+    grid-column: 1 / -1;
+    text-align: center;
+    width: 100%;
+}
+
 figure {
     display: flex;
     flex-direction: column;
-    align-items: center; /* centra horizontalmente */
+    align-items: center;
 }
 
 .divMovies-movie img{
